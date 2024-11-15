@@ -65,13 +65,11 @@ export const popularProducts = [
   },
   {
     id: 4,
-    image:
-      "/Media/Products/Mens-Standard-Fit-Crew-T-Shirt01-600x764-removebg-preview.png",
+    image: "/Media/Products/shorts.png",
   },
   {
     id: 5,
-    image:
-      "/Media/Products/Mens-Standard-Fit-Crew-T-Shirt01-600x764-removebg-preview.png",
+    image: "/Media/Products/jeans.png",
   },
   {
     id: 6,
