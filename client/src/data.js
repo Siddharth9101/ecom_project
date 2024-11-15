@@ -25,18 +25,19 @@ export const sliderItems = [
 export const categories = [
   {
     id: 1,
-    image: "/Media/Products/category1.webp",
+    image:
+      "/Media/Products/Mens-Standard-Fit-Sherpa-Fleece-Jacket01-600x764-removebg-preview.png",
     title: "Men's Clothing",
   },
   {
     id: 2,
-    image: "/Media/Products/category1.webp",
+    image: "/Media/wooman-cat.jpg",
     title: "Women's Clothing",
   },
   {
     id: 3,
-    image: "/Media/Products/category1.webp",
-    title: "Accessories",
+    image: "/Media/Products/child.jpeg",
+    title: "Children Clothing",
   },
 ];
 
@@ -63,8 +64,7 @@ export const popularProducts = [
   },
   {
     id: 6,
-    image:
-      "/Media/Products/Mens-Standard-Fit-Crew-T-Shirt01-600x764-removebg-preview.png",
+    image: "/Media/Products/kid_cloth-removebg-preview.png",
   },
   {
     id: 7,
