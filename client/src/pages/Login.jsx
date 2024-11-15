@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
+  user-select: none;
   width: 100vw;
   height: 100vh;
   background: linear-gradient(
@@ -15,9 +17,11 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 2S%;
+  width: 25%;
   background-color: white;
   padding: 20px;
+
+  ${mobile({ width: "75%" })}
 `;
 
 const Title = styled.h1`
@@ -45,12 +49,10 @@ const Button = styled.button`
   background-color: teal;
   color: white;
   cursor: pointer;
-  user-select: none;
   margin-bottom: 10px;
 `;
 
 const Link = styled.a`
-  user-select: none;
   margin: 5px 0px;
   text-decoration: underline;
   font-size: 12px;
