@@ -38,16 +38,6 @@ export const categories = [
     image: "/Media/Products/category1.webp",
     title: "Accessories",
   },
-  {
-    id: 4,
-    image: "/Media/Products/category1.webp",
-    title: "Shoes",
-  },
-  {
-    id: 5,
-    image: "/Media/Products/category1.webp",
-    title: "New Arrivals",
-  },
 ];
 
 export const popularProducts = [

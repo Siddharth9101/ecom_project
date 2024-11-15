@@ -5,7 +5,9 @@ import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-const Container = styled.div``;
+const Container = styled.div`
+  user-select: none;
+`;
 
 const Wrapper = styled.div`
   padding: 50px;

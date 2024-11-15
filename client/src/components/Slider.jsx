@@ -3,6 +3,7 @@ import { IoMdArrowDropleft } from "react-icons/io";
 import { IoMdArrowDropright } from "react-icons/io";
 import { sliderItems } from "../data";
 import { useState } from "react";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   width: 100%;
@@ -11,6 +12,8 @@ const Container = styled.div`
   /* background-color: coral; */
   position: relative;
   overflow: hidden;
+
+  ${mobile({ display: "none" })}
 `;
 const Arrow = styled.div`
   width: 50px;

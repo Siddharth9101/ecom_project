@@ -4,7 +4,9 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-const Container = styled.div``;
+const Container = styled.div`
+  user-select: none;
+`;
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -13,7 +15,6 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   font-weight: 300;
   text-align: center;
-  user-select: none;
 `;
 
 const Top = styled.div`
@@ -37,7 +38,6 @@ const TopText = styled.span`
   margin: 0 10px;
   text-decoration: underline;
   cursor: pointer;
-  user-select: none;
 `;
 
 const Bottom = styled.div`

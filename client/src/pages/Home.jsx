@@ -6,10 +6,15 @@ import Category from "../components/Category";
 import Products from "../components/Products";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
+import styled from "styled-components";
+
+const Container = styled.div`
+  user-select: none;
+`;
 
 const Home = () => {
   return (
-    <div>
+    <Container>
       <Announcement />
       <Navbar />
       <Slider />
@@ -17,7 +22,7 @@ const Home = () => {
       <Products />
       <Newsletter />
       <Footer />
-    </div>
+    </Container>
   );
 };
 
