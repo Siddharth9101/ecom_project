@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 import { IoHeartOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Info = styled.div`
   opacity: 0;
@@ -73,7 +74,9 @@ const Product = ({ item }) => {
           <IoCartOutline />
         </Icon>
         <Icon>
-          <IoSearchOutline />
+          <Link to={`/product/${item._id}`}>
+            <IoSearchOutline />
+          </Link>
         </Icon>
         <Icon>
           <IoHeartOutline />

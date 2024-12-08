@@ -4,6 +4,8 @@ import { IoCartOutline } from "react-icons/io5";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 60px;
@@ -90,6 +92,8 @@ const Badge = styled.div`
 `;
 
 const Navbar = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
+  // console.log(quantity);
   return (
     <Container>
       <Wrapper>
@@ -107,10 +111,12 @@ const Navbar = () => {
         <Right>
           <MenuItem>Register</MenuItem>
           <MenuItem>LogIn</MenuItem>
-          <MenuItem>
-            <Badge>4</Badge>
-            <IoCartOutline size={24} />
-          </MenuItem>
+          <Link to="/cart">
+            <MenuItem>
+              <Badge>{quantity}</Badge>
+              <IoCartOutline size={24} />
+            </MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>
