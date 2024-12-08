@@ -4,6 +4,7 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { mobile } from "../responsive";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   user-select: none;
@@ -160,6 +161,8 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+  console.log(cart.products);
   return (
     <Container>
       <Navbar />
@@ -176,63 +179,43 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            <Product>
-              <ProductDetails>
-                <Image src="Media/shoe.jpeg" />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> Shoes
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 1234567
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    <b>Size:</b> 8
-                  </ProductSize>
-                </Details>
-              </ProductDetails>
-              <PriceDetails>
-                <ProductAmountContainer>
-                  <FaPlus />
-                  <ProductAmount>2</ProductAmount>
-                  <FaMinus />
-                </ProductAmountContainer>
-                <ProductPrice>Rs. 4000</ProductPrice>
-              </PriceDetails>
-            </Product>
+            {cart.products.map((product) => (
+              <Product>
+                <ProductDetails>
+                  <Image src="Media/shoe.jpeg" />
+                  <Details>
+                    <ProductName>
+                      <b>Product:</b> {product.title}
+                    </ProductName>
+                    <ProductId>
+                      <b>ID:</b> {product._id}
+                    </ProductId>
+                    <ProductColor color={product.color} />
+                    <ProductSize>
+                      <b>Size:</b> {product.size}
+                    </ProductSize>
+                  </Details>
+                </ProductDetails>
+                <PriceDetails>
+                  <ProductAmountContainer>
+                    <FaPlus />
+                    <ProductAmount>{product.quantity}</ProductAmount>
+                    <FaMinus />
+                  </ProductAmountContainer>
+                  <ProductPrice>
+                    Rs. {product.price * product.quantity}
+                  </ProductPrice>
+                </PriceDetails>
+              </Product>
+            ))}
+
             <Hr />
-            <Product>
-              <ProductDetails>
-                <Image src="Media/Products/shorts.png" />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> Shorts
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 12345564
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    <b>Size:</b> M
-                  </ProductSize>
-                </Details>
-              </ProductDetails>
-              <PriceDetails>
-                <ProductAmountContainer>
-                  <FaPlus />
-                  <ProductAmount>2</ProductAmount>
-                  <FaMinus />
-                </ProductAmountContainer>
-                <ProductPrice>Rs. 4000</ProductPrice>
-              </PriceDetails>
-            </Product>
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>Rs.5000</SummaryItemPrice>
+              <SummaryItemPrice>Rs. {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -244,7 +227,7 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>Rs.5000</SummaryItemPrice>
+              <SummaryItemPrice>Rs. {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <Button>CHECKOUT NOW</Button>
           </Summary>

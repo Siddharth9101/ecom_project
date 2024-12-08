@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { popularProducts } from "../data";
 import Product from "./Product";
-// import { useEffect, useState } from "react";
-// import axios from "axios";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Container = styled.div`
   padding: 20px;
@@ -11,20 +11,75 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const Products = () => {
-  // const [products, setProducts] = useState([]);
+const Products = ({ cat, filters, sort }) => {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  // const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("https://dummyjson.com/products/category/mens-shirts")
-  //     .then((res) => console.log(res.data.products))
-  //     .catch((err) => console.log(err));
-  // }, []);
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const res = await axios.get(
+          cat
+            ? `http://localhost:3000/api/products?category=${cat}`
+            : "http://localhost:3000/api/products"
+        );
+        // console.log(res.data);
+        setProducts(res.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        // setLoading(false);
+      }
+    };
+    getProducts();
+  }, [cat]);
+
+  useEffect(() => {
+    const filterProducts = () => {
+      // setLoading(true);
+
+      const filtered = products.filter((item) =>
+        Object.entries(filters).every(([key, value]) =>
+          item[key]?.includes(value)
+        )
+      );
+
+      setFilteredProducts(filtered);
+      // setLoading(false);
+    };
+
+    if (products.length > 0 && cat) {
+      filterProducts();
+    }
+  }, [products, cat, filters]);
+
+  useEffect(() => {
+    if (sort === "newest") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.createdAt - b.createdAt)
+      );
+    } else if (sort === "asc") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.price - b.price)
+      );
+    } else {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => b.crepriceatedAt - a.price)
+      );
+    }
+  }, [sort]);
+
   return (
     <Container>
-      {popularProducts.map((item) => {
-        return <Product item={item} key={item.id} />;
-      })}
+      {/* {console.log(filteredProducts)} */}
+      {cat
+        ? filteredProducts.map((item) => {
+            return <Product item={item} key={item._id} />;
+          })
+        : products.slice(0, 8).map((item) => {
+            return <Product item={item} key={item._id} />;
+          })}
+      {/* {console.log(filteredProducts)} */}
     </Container>
   );
 };

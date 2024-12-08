@@ -20,6 +20,9 @@ const userSchema = Schema(
       type: Boolean,
       default: false,
     },
+    img: {
+      type: String,
+    },
   },
   { versionKey: false, timestamps: true }
 );
